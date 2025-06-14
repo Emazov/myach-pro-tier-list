@@ -9,7 +9,6 @@ const App = () => {
 		const webapp = window.Telegram.WebApp;
 		webapp.ready();
 		webapp.expand();
-		webapp.requestFullscreen?.();
 	}, []);
 
 	return (

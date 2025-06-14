@@ -24,7 +24,7 @@ const Game = () => {
 						<img
 							src='/kane.jpg'
 							alt='player'
-							className='w-[clamp(10rem,50vw,20rem)]'
+							className='w-[clamp(5rem,40vw,15rem)]'
 						></img>
 					</div>
 				</div>
