@@ -3,14 +3,13 @@ import Welcome from './pages/Welcome.page';
 import Guide from './pages/Guide.page';
 import Game from './pages/Game.page';
 import { useEffect } from 'react';
-// import './App.css';
 
 const App = () => {
 	useEffect(() => {
-		if (window.Telegram?.WebApp) {
-			window.Telegram.WebApp.ready();
-			window.Telegram.WebApp.expand();
-		}
+		const webapp = window.Telegram.WebApp;
+		webapp.ready();
+		webapp.expand();
+		webapp.requestFullscreen?.();
 	}, []);
 
 	return (

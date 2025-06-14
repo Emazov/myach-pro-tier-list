@@ -1,7 +1,11 @@
 declare global {
 	interface Window {
 		Telegram: {
-			WebApp: any;
+			WebApp: {
+				ready: () => void;
+				expand: () => void;
+				requestFullscreen?: () => void;
+			};
 		};
 	}
 }
