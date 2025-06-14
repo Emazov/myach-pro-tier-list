@@ -14,7 +14,7 @@ const Guide = () => {
 	const [nextStep, setNextStep] = useState(false);
 
 	return (
-		<div className=' h-full'>
+		<div className='guide h-full'>
 			<div className='container flex flex-col justify-between h-full'>
 				<div></div>
 				<div className='hero flex flex-col gap-10'>
@@ -117,7 +117,7 @@ const Guide = () => {
 						</button>
 						<Link
 							to='/game'
-							className='link_btn text-white bg-[#EC3381] text-[clamp(1rem,2vh,1.5rem)] border-2 py-[clamp(0.5rem,2vh,1rem)]'
+							className='link_btn text-white bg-[#EC3381] text-[clamp(1rem,2vh,1.5rem)] border-2 border-[#EC3381] py-[clamp(0.5rem,2vh,1rem)]'
 						>
 							Начать игру
 						</Link>
