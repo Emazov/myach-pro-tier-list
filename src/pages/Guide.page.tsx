@@ -16,8 +16,7 @@ const Guide = () => {
 	return (
 		<div className='guide h-full'>
 			<div className='container flex flex-col justify-between h-full'>
-				<div></div>
-				<div className='hero flex flex-col gap-10'>
+				<div className='hero flex flex-col gap-10 mt-[clamp(1rem,5vh,3rem)]'>
 					{!nextStep && (
 						<>
 							<div className='guide_item'>
@@ -93,7 +92,7 @@ const Guide = () => {
 							<div className='guide_item'>
 								<h2 className='text-[clamp(2rem,7vw,3rem)] text-center font-bold'>
 									Если в категории нет места — можно заменить игрока или выбрать
-									другую
+									другую категорию
 								</h2>
 							</div>
 						</>

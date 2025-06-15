@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const categories = [
 	{ name: 'goat', color: '#0EA94B', slots: 2 },
 	{ name: 'Хорош', color: '#94CC7A', slots: 6 },
@@ -25,25 +27,27 @@ const Game = () => {
 							className='w-[clamp(1rem,45vmin,20rem)]'
 						></img>
 					</div>
-				</div>
-				<div className='category w-full'>
-					<h3 className='text-[clamp(1rem,4vh,1.2rem)] text-center mb-4'>
-						Выбери один из категорий для данного игрока
-					</h3>
-					<ul className='category_list text-center flex flex-col gap-3'>
-						{categories.map((category) => (
-							<li
-								key={`category-${category.name}`}
-								className='category_item flex items-center justify-center gap-4 text-[clamp(1rem,4vh,1.7rem)] font-bold rounded-lg text-white uppercase py-[clamp(0.5rem,1vh,1.5rem)]'
-								style={{
-									backgroundColor: category.color,
-								}}
-							>
-								<p>{category.name}</p>
-								<p className='font-normal'>0 / {category.slots}</p>
-							</li>
-						))}
-					</ul>
+					<div className='category w-full'>
+						<h3 className='text-[clamp(1rem,4vh,1.2rem)] text-center mb-4'>
+							Выбери один из категорий для данного игрока
+						</h3>
+						<ul className='category_list text-center flex flex-col gap-3'>
+							{categories.map((category) => (
+								<Link to={`/guide`}>
+									<li
+										key={`category-${category.name}`}
+										className='category_item flex items-center justify-center gap-4 text-[clamp(1rem,4vh,1.7rem)] font-bold rounded-lg text-white uppercase py-[clamp(0.5rem,1vh,1.5rem)]'
+										style={{
+											backgroundColor: category.color,
+										}}
+									>
+										<p>{category.name}</p>
+										<p className='font-normal'>0 / {category.slots}</p>
+									</li>
+								</Link>
+							))}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
