@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Welcome = () => {
 	return (
-		<div className='welcome bg-[url("./main_bg.jpg")] bg-cover bg-center h-full'>
+		<div className='welcome bg-[url("/main_bg.jpg")] bg-cover bg-center h-full'>
 			<div className='container flex flex-col justify-between h-full'>
 				<div></div>
 				<div className='hero flex flex-col items-center'>

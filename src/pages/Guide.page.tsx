@@ -27,7 +27,7 @@ const Guide = () => {
 								<div className='player_list grid grid-cols-10 gap-1'>
 									{players.map((num) => (
 										<div
-											className='player_item flex items-center justify-center text-[clamp(1.5rem,4vw,2.5rem)] font-bold bg-[#FFEC13] text-[#D225D7] rounded-lg'
+											className='player_item flex items-center justify-center text-[clamp(1.5rem,4vw,2.5rem)] font-bold bg-[#FFEC13] text-[#EC3381] rounded-lg'
 											key={`player-${num}`}
 										>
 											<p>{num}</p>
@@ -79,7 +79,7 @@ const Guide = () => {
 													(_, i) => i + 1,
 												).map((num) => (
 													<li
-														className='player_item flex items-center justify-center text-[clamp(1.5rem,4vw,2.5rem)] font-bold bg-[#FFEC13] text-[#D225D7] rounded-lg w-[clamp(2rem,4vw,3rem)] h-[clamp(2rem,4vh,4rem)]'
+														className='player_item flex items-center justify-center text-[clamp(1.5rem,4vw,2.5rem)] font-bold bg-[#FFEC13] text-[#EC3381] rounded-lg w-[clamp(2rem,4vw,3rem)] h-[clamp(2rem,4vh,4rem)]'
 														key={`slot-${num}`}
 													>
 														{num}
