@@ -100,7 +100,7 @@ const Guide = () => {
 				</div>
 				{!nextStep && (
 					<button
-						className='link_btn bg-[#EC3381] text-white py-[clamp(1rem,2vh,2rem)] text-[clamp(1rem,2vh,1.5rem)]'
+						className='link_btn bg-[#EC3381] border-1 border-[#EC3381] text-white py-[clamp(1rem,2vh,2rem)] text-[clamp(1rem,2vh,1.5rem)]'
 						onClick={() => setNextStep(true)}
 					>
 						Дальше
