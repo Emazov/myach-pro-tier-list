@@ -54,15 +54,19 @@ const getReleasePlayers = async (releaseId: string) => {
 const getNextPlayerForVoting = async (telegramUserId?: string) => {
 	let url = `${API_URL}/votes/players/next`;
 	if (telegramUserId) {
-		url += `?telegramUserId=${telegramUserId}`;
+		url += `?telegramId=${telegramUserId}`;
 	}
 	const response = await fetch(url);
 	return checkResponse(response);
 };
 
 // Получение всех игроков для голосования
-const getPlayersForVoting = async () => {
-	const response = await fetch(`${API_URL}/votes/players`);
+const getPlayersForVoting = async (telegramUserId?: string) => {
+	let url = `${API_URL}/votes/players`;
+	if (telegramUserId) {
+		url += `?telegramId=${telegramUserId}`;
+	}
+	const response = await fetch(url);
 	return checkResponse(response);
 };
 
@@ -77,7 +81,11 @@ const addVote = async (data: {
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(data),
+		body: JSON.stringify({
+			telegramId: data.telegramUserId,
+			playerId: data.playerId,
+			categoryId: data.categoryId,
+		}),
 	});
 	return checkResponse(response);
 };
@@ -86,7 +94,7 @@ const addVote = async (data: {
 const getUserVotingStats = async (telegramUserId?: string) => {
 	let url = `${API_URL}/votes/user-stats`;
 	if (telegramUserId) {
-		url += `?telegramUserId=${telegramUserId}`;
+		url += `?telegramId=${telegramUserId}`;
 	}
 	const response = await fetch(url);
 	return checkResponse(response);

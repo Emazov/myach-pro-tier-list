@@ -1,54 +1,70 @@
-# React + TypeScript + Vite
+# MyAch Pro Tir List - Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Клиентское приложение для Telegram WebApp, позволяющее пользователям голосовать за игроков и создавать тир-листы.
 
-Currently, two official plugins are available:
+## Установка
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Настройка окружения
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Создайте файл `src/config.ts` со следующим содержимым:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```typescript
+// API URL - путь к вашему бэкенду
+export const API_URL = 'http://localhost:3000/api';
 ```
+
+Для продакшена можно использовать переменные окружения. Создайте `.env` или `.env.production`:
+
+```
+VITE_API_URL=https://your-backend-url.com/api
+```
+
+## Запуск для разработки
+
+```bash
+npm run dev
+```
+
+## Сборка для продакшена
+
+```bash
+npm run build
+```
+
+## Telegram WebApp интеграция
+
+### Тестирование в режиме разработки
+
+1. Запустите бэкенд и клиент локально
+2. Используйте [ngrok](https://ngrok.com/) для создания публичного URL:
+   ```bash
+   ngrok http 5173  # или другой порт, на котором запущен Vite
+   ```
+3. Используйте полученный URL для настройки WEB_APP_URL в бэкенде
+4. Перейдите к боту в Telegram и нажмите кнопку "Открыть Тир-лист игроков"
+
+### Структура проекта
+
+- `src/api.ts` - API клиент для взаимодействия с бэкендом
+- `src/types/` - TypeScript интерфейсы
+- `src/contexts/` - React контексты для управления состоянием
+  - `UserContext.tsx` - Управление данными пользователя Telegram
+  - `GameContext.tsx` - Управление процессом игры и голосования
+- `src/pages/` - Страницы приложения
+  - `Welcome.page.tsx` - Приветственный экран
+  - `Guide.page.tsx` - Инструкции для пользователя
+  - `Game.page.tsx` - Основной игровой процесс
+
+## Взаимодействие с Telegram WebApp
+
+В приложении используются следующие возможности Telegram WebApp:
+
+- `window.Telegram.WebApp.initData` - Получение данных пользователя
+- `window.Telegram.WebApp.ready()` - Сигнал о готовности приложения
+- `window.Telegram.WebApp.expand()` - Развертывание на весь экран
+
+При разработке без Telegram окружения, вы можете использовать заглушки для этих методов.
